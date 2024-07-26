@@ -1,5 +1,6 @@
 from typing import List, Optional
-from ninja import NinjaAPI
+from ninja import NinjaAPI, File
+from ninja.files import UploadedFile
 from tracks.models import Track
 from tracks.schema import TrackSchema, NotFoundSchema
 
@@ -63,5 +64,11 @@ def delete_track(request, track_id: int):
         return 404, {"message": "Track does not exist"}
 
     
-
+@api.post("/upload")
+def upload(request, file: UploadedFile = File(...)):
+    data = file.read().decode()
+    return {
+        'name': file.name,
+        'data': data
+    }
 
