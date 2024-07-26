@@ -14,14 +14,14 @@ This project demonstrates a CRUD API using Django Ninja for managing a music tra
 ## Installation and Running
 1. **Clone the Repo**
 2. **Install Dependencies** \
-``` pip install -r requirments.txt```
+```pip install -r requirments.txt```
 3. **Run Migrations** \
-``` python manage.py makemigrations``` \
-``` python manage.py migrate``` 
+```python manage.py makemigrations``` \
+```python manage.py migrate``` 
 4. **Load Initial Database** \
-``` python manage.py ingest_tracks```
+```python manage.py ingest_tracks```
 5. **Start the Server** \
-``` python manage.py runserver```
+```python manage.py runserver```
 
 ## Usage
 * **GET:** If the URL entered is "api/tracks" with no data entered, all tracks are outputted. If the URL is "api/tracks/{track_id}, the track with the particular {track_id} is outputted.
