@@ -25,3 +25,43 @@ def track(request, track_id: int):
         return track
     except Track.DoesNotExist as e:
         return 404, {"message": "Track does not exist"}
+    
+# POST endpoint (Create)
+@api.post("/tracks", response={201: TrackSchema})
+def create_track(request, track: TrackSchema):
+    Track.objects.create(**track.dict())
+    return track
+
+# PUT endpoint (Update)
+@api.put("/tracks/{track_id}", response={200: TrackSchema, 404: NotFoundSchema})
+def change_track(request, track_id: int, data: TrackSchema):
+    try: 
+        # retrieve track using the id
+        track = Track.objects.get(pk = track_id)
+        # looping over the key-value pairs in the TrackSchema after making it a dict
+        for attribute, value in data.dict().items():
+            # changes the key-value pairs of track object to new ones sent by user
+            setattr(track, attribute, value)
+        # new track object saved in database
+        track.save()
+        
+        # respond with 200 status code and the new track
+        return 200, track
+    except Track.DoesNotExist as e:
+        return 404, {"message": "Track does not exist"}
+    
+# DELETE endpoint (Delete)
+@api.delete("/tracks/{track_id}", response={200: None, 404: NotFoundSchema})
+def delete_track(request, track_id: int):
+    try: 
+        # retrieve track using the id
+        track = Track.objects.get(pk = track_id)
+        # delete track from database and return 200 status code
+        track.delete()
+        return 200
+    except Track.DoesNotExist as e:
+        return 404, {"message": "Track does not exist"}
+
+    
+
+
