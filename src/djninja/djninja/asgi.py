@@ -1,5 +1,4 @@
-"""
-ASGI config for djninja project.
+"""ASGI config for djninja project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 

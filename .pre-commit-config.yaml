@@ -2,23 +2,53 @@ repos:
 - repo: https://github.com/psf/black
   rev: 24.1.1
   hooks:
-  - id: black
+    - id: black
+      description: "Black is a code formatter for Python. It formats Python code to follow PEP 8 style guidelines consistently."
+
 - repo: https://github.com/asottile/pyupgrade
   rev: v3.15.1
   hooks:
-  -   id: pyupgrade
+    - id: pyupgrade
+      description: "Pyupgrade automatically upgrades syntax for newer versions of the Python language. It helps keep code modern and efficient."
+
 - repo: https://github.com/pycqa/isort
   rev: 5.13.2
   hooks:
-  - id: isort
-    args: [--profile=black]
+    - id: isort
+      args: [--profile=black]
+      description: "Isort sorts imports in Python files. It ensures that imports are sorted alphabetically and grouped correctly, improving readability and consistency."
+
 - repo: https://github.com/PyCQA/flake8
   rev: 7.0.0
   hooks:
-  - id: flake8
-    args: ["--ignore=E501,W503,F704,E203"]
+    - id: flake8
+      args: ["--ignore=E501,W503,F704,E203"]
+      description: "Flake8 is a linting tool that checks Python code for compliance with coding standards like PEP 8. It also checks for errors and potential issues in the code."
+
 - repo: https://github.com/pre-commit/mirrors-mypy
   rev: 'v1.9.0'
   hooks:
-  - id: mypy
-    args: ['--ignore-missing-imports', '--disable-error-code=top-level-await', "--disable-error-code=empty-body"]
+    - id: mypy
+      args: ['--ignore-missing-imports', '--disable-error-code=top-level-await', "--disable-error-code=empty-body"]
+      description: "Mypy is a static type checker for Python. It checks type annotations in the code, helping to identify type errors and improve code quality."
+
+- repo: https://github.com/myint/docformatter
+  rev: v1.4
+  hooks:
+    - id: docformatter
+      args: ["--in-place", "--wrap-summaries=79", "--wrap-descriptions=72"]
+      description: "Docformatter formats docstrings in Python code to adhere to PEP 257 conventions. It ensures consistent documentation style across the codebase."
+
+- repo: https://github.com/econchick/interrogate
+  rev: 1.7.0
+  hooks:
+    - id: interrogate
+      args: ["--fail-under=20"]
+      description: "Interrogate checks Python code for documentation coverage. It ensures that docstrings are present and complete, and the hook fails if coverage is below the specified threshold."
+
+- repo: https://github.com/hhatto/autopep8
+  rev: v2.2.0
+  hooks:
+    - id: autopep8
+      args: ["--in-place", "--max-line-length=88"]
+      description: "Autopep8 formats Python code to adhere to PEP-8 style guidelines, correcting various formatting issues."

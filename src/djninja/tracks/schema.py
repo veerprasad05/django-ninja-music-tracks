@@ -4,8 +4,7 @@ from ninja import Schema
 
 
 class TrackSchema(Schema):
-    """
-    Schema representing a music track.
+    """Schema representing a music track.
 
     Attributes:
         title (set): A set of strings representing the titles of the track.
@@ -21,8 +20,7 @@ class TrackSchema(Schema):
 
 
 class NotFoundSchema(Schema):
-    """
-    Schema for a not found response (in case the user searches by track id)
+    """Schema for a not found response (in case the user searches by track id)
 
     Attributes:
         message (str): A message indicating that the requested resource was not found.

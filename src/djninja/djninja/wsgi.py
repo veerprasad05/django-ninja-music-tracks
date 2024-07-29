@@ -1,5 +1,4 @@
-"""
-WSGI config for djninja project.
+"""WSGI config for djninja project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 

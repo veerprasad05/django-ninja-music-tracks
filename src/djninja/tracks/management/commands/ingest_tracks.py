@@ -11,8 +11,7 @@ from tracks.models import Track
 
 
 class Command(BaseCommand):
-    """
-    Custom Django management command to import track data from a JSON file
+    """Custom Django management command to import track data from a JSON file
     into the database.
 
     This command reads a JSON file containing track data, converts date strings
